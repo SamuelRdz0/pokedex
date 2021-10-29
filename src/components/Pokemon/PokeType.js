@@ -29,7 +29,8 @@ const Poketype = (props) => {
     return(
 
         <View  key={pokemon.name} style={styleSheet.asta}>
-                <Image style={{ width: 100, height: 100 }} source={PokemonType?.sprites?.front_default}/>
+                <Image style={{ width: 150, height: 150 }} source={PokemonType?.sprites?.front_default}/>
+                <Text> ID: {PokemonType?.id}</Text>
                     <Text> Nombre:{pokemon.name}</Text>
                 <Text> Tipo: {PokemonType?.types[0].type?.name} </Text>           
             </View>

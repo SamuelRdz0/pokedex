@@ -6,22 +6,26 @@ const styles = {
         flex:1,
         justifyContent: 'center',
         alignItems: 'center',
+        
     },
     asta: {
-        padding: 10,
         backgroundColor: '#63dcf7',
-        borderWidth: 1,
+        borderWidth: 4,
         borderColor: 'black',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 50,
+        marginTop: 5,
+        borderRadius: 50,
+        margin: 100,
+        height: 250, 
+            
     },
+
     kunno: {
         justifyContent: 'center',
         alignItems: 'center',
         padding: 15,
-        backgroundColor: '#fc6a6a',
-        
+        backgroundColor: '#fc6a6a',      
     }
 };
 
