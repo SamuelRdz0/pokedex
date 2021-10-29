@@ -3,9 +3,9 @@ import { StyleSheet } from "react-native";
 
 const styles = {
     container: {
-        flex:1,
+        flex: 1,
         margin: 10,
-        backgroundColor: '#808080'
+        backgroundColor: '#fc6a6a'
     }
 };
 

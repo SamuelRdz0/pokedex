@@ -11,7 +11,7 @@ const PokedexInfo = () => {
 
     const getPokemons = async () => {
         try {
-            const response = await axios.get(`${CONSTANTS.BASE_API_URL}?limit=150`);
+            const response = await axios.get(`${CONSTANTS.BASE_API_URL}?limit=15`);
             setPokemons(response.data.results);
         } catch (error) {
             console.error(error);
@@ -85,6 +85,7 @@ function PokemonShow(item) {
             </View>
         </ScrollView>
     </Screen>*/
+
     ////////////////sirve----------------------------------------------------
         
 

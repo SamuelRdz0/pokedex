@@ -9,16 +9,19 @@ const styles = {
     },
     asta: {
         padding: 10,
-        backgroundColor: '#ffff',
+        backgroundColor: '#63dcf7',
         borderWidth: 1,
         borderColor: 'black',
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop: 50,
     },
     kunno: {
         justifyContent: 'center',
         alignItems: 'center',
         padding: 15,
+        backgroundColor: '#fc6a6a',
+        
     }
 };
 
