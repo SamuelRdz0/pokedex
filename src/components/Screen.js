@@ -1,7 +1,6 @@
 import React from "react";
 import styleSheet from './styles';
-import { View, li } from "react-native";
-import { FlatListProps } from "react-native";
+import { View } from "react-native";
 
 
 const Screen = (props) => {

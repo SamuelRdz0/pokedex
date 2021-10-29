@@ -9,7 +9,7 @@ const styles = {
     },
     asta: {
         padding: 10,
-        backgroundColor: '#dc143c',
+        backgroundColor: '#ffff',
         borderWidth: 1,
         borderColor: 'black',
         justifyContent: 'center',
