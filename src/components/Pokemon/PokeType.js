@@ -1,6 +1,6 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { useEffect, useState } from "react";
 import styleSheet from '../../screens/styles';
-import { View, Text, Image, ScrollView } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import axios from 'axios';
 import CONSTANTS from "../../config/constants";
 
@@ -21,19 +21,28 @@ const Poketype = (props) => {
         }
     }
 
+     const onPressPokemon = () => {
+        alert (pokemon.name), 
+        alert (PokemonType?.types[0].type?.name);
+        
+    }
+
     useEffect(() => {
         getPokemonType();
     }, []);
 
 
     return(
-
-        <View  key={pokemon.name} style={styleSheet.asta}>
-                <Image style={{ width: 150, height: 150 }} source={PokemonType?.sprites?.front_default}/>
+        
+            <TouchableOpacity onPress={onPressPokemon}>
+                <View  key={pokemon.name} style={styleSheet.asta}>
+                <Image style={{ width: 150, height: 150 }} source={{uri: PokemonType?.sprites?.front_default}}/>
                 <Text> ID: {PokemonType?.id}</Text>
                     <Text> Nombre:{pokemon.name}</Text>
                 <Text> Tipo: {PokemonType?.types[0].type?.name} </Text>           
             </View>
+            </TouchableOpacity>
+             
     )
           
     
