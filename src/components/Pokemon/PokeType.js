@@ -27,29 +27,41 @@ const Poketype = (props) => {
         
     }*/
 
-
-
     useEffect(() => {
         getPokemonType();
     }, []);
 
+    const [selectpo,setpok] = useState(false);
+    const setpokemonTodo = async() => {
+        setpok(!selectpo)
+    }
 
     return(
         
-            <TouchableOpacity 
-                onPress={() => Alert.alert("Nombre: " + pokemon.name + "              " + "Tipo: " + PokemonType?.types[0].type?.name)}
-            >
-                <View  key={pokemon.name} style={styleSheet.asta}>
-                <Image style={{ width: 150, height: 150 }} source={{uri: PokemonType?.sprites?.front_default}}/>
-                <Text> ID: {PokemonType?.id}</Text>
-                    <Text> Nombre:{pokemon.name}</Text>
-                <Text> Tipo: {PokemonType?.types[0].type?.name} </Text>           
-            </View>
-            </TouchableOpacity>
-             
+            ////<TouchableOpacity 
+              //  onPress={() => Alert.alert("Nombre: " + pokemon.name + "              " + "Tipo: " + PokemonType?.types[0].type?.name)}
+         //   >
+            //    <View  key={pokemon.name} style={styleSheet.asta}>
+            //    <Image style={{ width: 150, height: 150 }} source={{uri: PokemonType?.sprites?.front_default}}/>
+            //   <Text> ID: {PokemonType?.id}</Text>
+            //        <Text> Nombre:{pokemon.name}</Text>
+            //    <Text> Tipo: {PokemonType?.types[0].type?.name} </Text>           
+          //  </View>
+           // </TouchableOpacity>
+           <View key={pokemon.name} style={styleSheet.asta}>
+               <Text>{selectpo? "Nombre: " + pokemon.name +"\n"+"Tipo: " +PokemonType?.types[0].type?.name: ""}</Text>
+           <TouchableOpacity 
+           onPress={setpokemonTodo}>
+
+
+               <Image style={{ width: 150, height: 150 }} 
+               source={{uri: PokemonType?.sprites?.front_default}}/>
+           </TouchableOpacity>
+            </View> 
     )
           
     
 };
+
 
 export default Poketype;

@@ -26,6 +26,7 @@ const PokedexInfo = () => {
     return (
     <Screen>
         <View style={styleSheet.kunno}><Text>Pokedex</Text></View>
+        
         <ScrollView>
             {pokemons.map((pokemon) => (
                 <Poketype pokemon={pokemon} />

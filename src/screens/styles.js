@@ -16,7 +16,7 @@ const styles = {
         alignItems: 'center',
         marginTop: 5,
         borderRadius: 50,
-        margin: 100,
+        margin: 50,
         height: 250, 
             
     },
