@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from "react";
 import styleSheet from './styles';
-import { ScrollView, Text, View } from "react-native";
+import { SafeAreaView, ScrollView, Text, View } from "react-native";
 import Screen from '../components/Screen'
 import axios from 'axios';
 import CONSTANTS from "../config/constants";
@@ -25,7 +25,16 @@ const PokedexInfo = () => {
 
     return (
     <Screen>
-        <View style={styleSheet.kunno}><Text>Pokedex</Text></View>
+        <View style={styleSheet.kunno}>
+        
+        <Text>Pokedex</Text>
+        
+        </View>
+        <SafeAreaView>
+            <View>
+                <Text>asdasda</Text>
+            </View>
+        </SafeAreaView>
         
         <ScrollView>
             {pokemons.map((pokemon) => (

@@ -12,13 +12,11 @@ const styles = {
         backgroundColor: '#63dcf7',
         borderWidth: 4,
         borderColor: 'black',
-        justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 5,
+        marginTop: 0,
         borderRadius: 50,
-        margin: 50,
-        height: 250, 
-            
+        padding: 20 
+        
     },
 
     kunno: {

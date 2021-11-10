@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styleSheet from '../../screens/styles';
-import { View, Text, Image, TouchableOpacity, Alert } from "react-native";
+import { View, Text, Image, TouchableOpacity, Alert, ImageBackground } from "react-native";
 import axios from 'axios';
 import CONSTANTS from "../../config/constants";
-
 
 const Poketype = (props) => {
     const {pokemon} = props;
@@ -36,6 +35,8 @@ const Poketype = (props) => {
         setpok(!selectpo)
     }
 
+
+
     return(
         
             ////<TouchableOpacity 
@@ -48,16 +49,32 @@ const Poketype = (props) => {
             //    <Text> Tipo: {PokemonType?.types[0].type?.name} </Text>           
           //  </View>
            // </TouchableOpacity>
+           <View key={pokemon.name}>
+
+            <Image style={{ width:150,
+        height:100,
+        alignContent: 'center',
+        margin: 50,
+        paddingLeft: 150,
+         }} source={{uri: (selectpo ? PokemonType?.sprites?.front_default : "")}}/>
+
            <View key={pokemon.name} style={styleSheet.asta}>
-               <Text>{selectpo? "Nombre: " + pokemon.name +"\n"+"Tipo: " +PokemonType?.types[0].type?.name: ""}</Text>
+
+               
+
+               <Text>{selectpo? "Nombre: " + pokemon.name +"\n"+"Tipo: " +PokemonType?.types[0].type?.name +"\n"+ "ID: "+PokemonType?.id : ""}</Text>
+
            <TouchableOpacity 
            onPress={setpokemonTodo}>
 
-
-               <Image style={{ width: 150, height: 150 }} 
-               source={{uri: PokemonType?.sprites?.front_default}}/>
+                <Image source={require('../../../assets/pokebola.png')} style={{width: 50, height: 50}}/>
+               <Text>
+                   
+                   {pokemon.name}
+               </Text>
            </TouchableOpacity>
             </View> 
+            </View>
     )
           
     
