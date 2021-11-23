@@ -1,103 +1,116 @@
 import React, { useState, useEffect, } from "react";
 import styleSheet from './styles';
-import { SafeAreaView, ScrollView, Text, View } from "react-native";
-import Screen from '../components/Screen'
+import { ScrollView, Text, View, Image } from "react-native";
+import Screen from '../components/Screen/Screen'
 import axios from 'axios';
 import CONSTANTS from "../config/constants";
-import Poketype from "../components/Pokemon/PokeType";
+import PokemonDesc from "../components/PokemonDesc/index";
+import COLORS from "../config/colors";
 
 const PokedexInfo = () => {
     const [pokemons, setPokemons] = useState([]);
-
-    const getPokemons = async () => {
+    const [[pokemon, pokemonDetail], setPokemon] = useState([]);
+    const getPokemonsAsync = async () => {
+        
         try {
-            const response = await axios.get(`${CONSTANTS.BASE_API_URL}?limit=10`);
+            const response = await axios.get(`${CONSTANTS.BASE_API_URL}?limit=150`);
             setPokemons(response.data.results);
         } catch (error) {
             console.error(error);
         }
-    }    
+    };
+    
+    const handlePressPokemon = (pokemon, pokemonDetail) => {
+        setPokemon([pokemon, pokemonDetail])
+        
+        
+        if(pokemonDetail.types[0].type.name === "grass"){
+            console.log('green')
+        }if(pokemonDetail.types[0].type.name === "fire"){
+            console.log('red')
+        }else {
+        }
+    }
 
 
     useEffect(() => {
-        getPokemons();
+        getPokemonsAsync();
     }, [])
 
+
     return (
-    <Screen>
-        <View style={styleSheet.kunno}>
-        
-        <Text>Pokedex</Text>
-        
-        </View>
-        <SafeAreaView>
-            <View>
-                <Text>asdasda</Text>
+        <Screen bgColor={COLORS.RED} >
+        <View style={styleSheet.container}>  
+       <View style={styleSheet.pokedexScreen} >
+           <View style={styleSheet.IMG_ID}>
+            {pokemon && (
+                <View>
+                   <Image source={{uri: pokemonDetail.sprites.front_default}} style={styleSheet.pokemonImg}/>
+                </View>
+            )}
+            {pokemonDetail && (
+                <Text style={styleSheet.Idpokemon}>{"ID: " + pokemonDetail.id}</Text>
+            )}
             </View>
-        </SafeAreaView>
+            <View style={styleSheet.abilities}>
+            {pokemon && (
+                <Text style={styleSheet.namePokemon}>{"Name: " + pokemon.name}</Text>
+            )}
+            {pokemonDetail && (
+                <Text style={styleSheet.Pokemontype}>{"Type: " + pokemonDetail?.types[0].type.name}</Text>
+            )}
+            </View>
+        </View>
         
-        <ScrollView>
+        
+        <ScrollView style={styleSheet.scrollView} contentContainerStyle={styleSheet.contentContainerStyle}>
             {pokemons.map((pokemon) => (
-                <Poketype pokemon={pokemon} />
-            ))}
-        </ScrollView>
+                <View key={pokemon.name} style={styleSheet.rowContainer}>
+                <PokemonDesc onPressPokemon={handlePressPokemon} pokemon={pokemon} />
+                </View>
+           ))}
+       </ScrollView>
+        </View>
     </Screen>
-    );
-    
-}
+    )
+            }
 
 export default PokedexInfo;
-    ///sirve---------------------------------------------------------------
-    /*const [pokemones, setPokemones ] = useState([])
     
-    useEffect(() => {
-        fetch('https://pokeapi.co/api/v2/pokemon', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            setPokemones(data.results)
-        })
-    }, [])
+   //*<Screen bgColor={COLORS.RED}>
 
-
-    return (
-        <SafeAreaView>
-            <FlatList
-            data={pokemones}
-            keyExtractor={(pokemon) => pokemon.name}
-            contentContainerStyle={{ flexGrow: 1 }}
-            renderItem={PokemonShow}
-            />
-        </SafeAreaView>
-    )
-}
-function PokemonShow(item) {
-
-    const { name, url } = item.item
-
-    const pokemonNumber = url.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/', '')
-
-    const imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+pokemonNumber+'.png'
-
-    return (
-        <Screen>
-        <View style={styleSheet.kunno}><Text>Pokedex</Text></View>
-        <ScrollView>
-             
-            <View style={styleSheet.asta}>
-            <Image style={{width: 100, height: 100}} source={{ uri: imageUrl }} />
-                <Text> Nombre: {name}</Text>
-                <Text> Tipo: </Text>
-            </View>
-        </ScrollView>
-    </Screen>*/
-
-    ////////////////sirve----------------------------------------------------
-        
-
-
+/*<View style={styleSheet.border}>
+<View style={styleSheet.pokedexScreen}>
+    <View style={styleSheet.imagScreen}>
+    {pokemonDetail &&(
+ <Text style={styleSheet.id}>{"ID: "+pokemonDetail?.id}</Text>
+    )}
+{pokemonDetail &&(
+ <Image source={{uri: pokemonDetail?.sprites.front_default}} style={styleSheet.imagPokemon} />
+    )}
+    </View>
+    <View style={styleSheet.abilities}>
+    {pokemon &&(
+ <Text style={styleSheet.namePokemon}>{pokemon.name}</Text>
+    )}
     
+    {pokemonDetail &&(
+ <Text style={styleSheet.typePokemon}  >{pokemonDetail?.types[0].type.name}</Text>
+    )}
+    </View>
+</View>
+
+
+<ScrollView key={pokemons.name} style={styleSheet.muestaPokemon}>
+{pokemons.map((pokemon) =>(
+    <View key={pokemon.name} style={styleSheet.rowContainer}>
+    <PokemonDesc onPressPokemon={handlePressPokemon} pokemon={pokemon}/>
+  </View>   
+  ))}   
+
+</ScrollView>
+</View>
+ </Screen>*/
+    /*);
+    
+};*/
