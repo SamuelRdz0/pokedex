@@ -25,12 +25,22 @@ const PokemonDesc = (props) => {
         getPokemonDetail();
     }, []);
     
+    const getBackgroundColor = (color) => {
+        switch(color){
+            case "grass":
+                return styleSheet.grass
+            case "fire":
+                return styleSheet.red
+            default:
+                return styleSheet.grass
+        }
+    }
 
     return(
            <TouchableOpacity onPress={handlePressPokemon} style={styleSheet.row}>
                <Text style={styleSheet.pokemonName}>{pokemon.name}</Text>
                <Text>{'       '}</Text>
-               <View style={styleSheet.type}><Text style={styleSheet.typeName}>{pokemonDetail?.types[0].type.name}</Text></View>
+               <View className="testing" style={[styleSheet.type, getBackgroundColor(pokemonDetail?.types[0].type.name)]}><Text style={styleSheet.typeName}>{pokemonDetail?.types[0].type.name}</Text></View>
            </TouchableOpacity>
     )
           

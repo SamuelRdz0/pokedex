@@ -37,6 +37,12 @@ const styles = {
         fontSize: 16,
         color: COLORS.LIGHT_BLUE,
     },
+    grass: {
+        backgroundColor: "green",
+    },
+    fire: {
+        backgroundColor: "red"
+    }
       
 };
 
